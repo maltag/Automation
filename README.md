@@ -1,9 +1,5 @@
-Repository created to build automated tests in Playwirght
+Repository to practice Automation in diferent libraries
 
-1. Login
-2. Navigate through a navbar
-3. Search product
-5. Add product
-6. Delete product
-7. Validate form
+1. Playwright
+2. Selenium WebDriver
    
