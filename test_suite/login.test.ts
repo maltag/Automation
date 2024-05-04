@@ -27,19 +27,27 @@ test("Valid credentials validation", async () => {
 
 });
 
-// test("Invalid credentials validation", async () => {
+test("Invalid credentials validation", async () => {
 
-//     const browser = await chromium.launch();
-//     const context = await browser.newContext();
-//     const page = await context.newPage();
+    const browser = await chromium.launch();
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    const isLoggedIn = await page.url() === 'https://www.demoblaze.com/';
+    await page.goto("https://www.demoblaze.com/");
+    await page.click("id=login2");
+    await page.locator("id=narvbarx", { hasText: 'Log in' }).click({ timeout: 5000 });
+    await page.fill('input[name="loginusername"]', 'Administrator');
+    await page.fill('input[name="id="loginpassword"]', '123'); 
+    await page.click('button[onclick="logIn()"]]');
+    await page.waitForSelector('.modal');
 
-//     await page.goto("https://www.demoblaze.com/");
-//     await page.click("id=login2");
-//     await page.locator("id=narvbarx", { hasText: 'Log in' }).click({ timeout: 5000 });
-//     await page.fill('input[name="loginusername"]', 'Admin');
-//     await page.fill('input[name="id="loginpassword"]', 'admin'); 
-//     await page.click('button[onclick="logIn()"]]');
+    // Verifica si se muestra un mensaje de error en el modal
+    const errorMessage = await page.textContent('.modal .error-message');
 
+  // Cierra el navegador
+  await browser.close();
+
+});
 
 // });
 
