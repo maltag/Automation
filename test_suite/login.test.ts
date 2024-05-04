@@ -38,8 +38,8 @@ test("Invalid credentials validation", async () => {
     await page.locator("id=narvbarx", { hasText: 'Log in' }).click({ timeout: 5000 });
     await page.fill('input[name="loginusername"]', 'Administrator');
     await page.fill('input[name="id="loginpassword"]', '123'); 
-    await page.click('button[onclick="logIn()"]]');
-    await page.waitForSelector('.modal');
+    await page.click('button[onclick="logIn()"]] .modal-footer .btn-primary');
+  
 
     // Verifica si se muestra un mensaje de error en el modal
     const errorMessage = await page.textContent('.modal .error-message');
